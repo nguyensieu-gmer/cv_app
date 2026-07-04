@@ -9,6 +9,14 @@ function App() {
   const [personalInfor, setPersonalInfor] = useState(data.personalInfor);
   const [education, setEducation] = useState(data.education);
   const [experience, setExperience] = useState(data.experience);
+
+  function handleChangePersonalInfor(e) {
+    const { name, value } = e.target;
+    setPersonalInfor((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+
   return (
     <>
       <Tool />
@@ -18,6 +26,7 @@ function App() {
           personalInfor={personalInfor}
           education={education}
           experience={experience}
+          actions={{ handleChangePersonalInfor }}
         />
       </div>
       <CV
