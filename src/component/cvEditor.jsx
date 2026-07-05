@@ -82,16 +82,6 @@ function ExpItem({ name }) {
   return <li>{name}</li>;
 }
 
-// {
-//       name: "Hanoi University",
-//       from: "2024",
-//       to: "2025",
-//       major: "Software Engineer",
-//       address: "Linh Dam, Ha Noi",
-//       visible: true,
-//       id: crypto.randomUUID(),
-//     },
-
 function EduForm({ handleChange }) {
   return (
     <form action="">
