@@ -12,13 +12,13 @@ export function CV({ personalInfor, education, experience }) {
         <h3>Education</h3>
         <ul>
           {education.map((item) => {
-            return <EduItem key={item.id} {...item} />;
+            return item.visible && <EduItem key={item.id} {...item} />;
           })}
         </ul>
         <h3>Experience</h3>
         <ul>
           {experience.map((item) => {
-            return <ExpItem key={item.id} {...item} />;
+            return item.visible && <ExpItem key={item.id} {...item} />;
           })}
         </ul>
       </header>
