@@ -10,6 +10,23 @@ function App() {
   const [education, setEducation] = useState(data.education);
   const [experience, setExperience] = useState(data.experience);
 
+  function loadExample() {
+    setPersonalInfor(data.personalInfor);
+    setEducation(data.education);
+    setExperience(data.experience);
+  }
+
+  function clearResume() {
+    setPersonalInfor({
+      name: "",
+      email: "",
+      address: "",
+      phone: "",
+    });
+    setEducation([]);
+    setExperience([]);
+  }
+
   function handleChangeExpVisible(id) {
     setExperience((items) =>
       items.map((item) =>
@@ -69,7 +86,7 @@ function App() {
     <>
       <Tool />
       <div>
-        <Action />
+        <Action clearResume={clearResume} loadExample={loadExample} />
         <Form
           personalInfor={personalInfor}
           education={education}

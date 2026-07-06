@@ -1,8 +1,8 @@
-export function Action() {
+export function Action({ clearResume, loadExample }) {
   return (
     <div>
-      <button>Clear resume</button>
-      <button>Load example</button>
+      <button onClick={clearResume}>Clear resume</button>
+      <button onClick={loadExample}>Load example</button>
     </div>
   );
 }
