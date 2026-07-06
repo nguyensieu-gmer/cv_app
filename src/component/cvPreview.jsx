@@ -52,7 +52,7 @@ function EduItem({ name, from, to, address, major }) {
   );
 }
 
-function ExpItem({ name, from, to, positionTitle, location }) {
+function ExpItem({ name, from, to, positionTitle, location, desciption }) {
   return (
     <li>
       <p>
@@ -61,6 +61,7 @@ function ExpItem({ name, from, to, positionTitle, location }) {
       <p className="organize">{name}</p>
       <p>{location}</p>
       <p>{positionTitle}</p>
+      <p className="cvDesciption">{desciption}</p>
     </li>
   );
 }
