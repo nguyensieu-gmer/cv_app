@@ -94,7 +94,15 @@ export function Form({
           />
         ) : (
           education.map((item) => {
-            return <EduItem key={item.id} eduActions={eduActions} edu={item} />;
+            return (
+              <EduItem
+                key={item.id}
+                setCurrentEduId={setCurrentEduId}
+                handleOpenEduForm={handleOpenEduForm}
+                eduActions={eduActions}
+                edu={item}
+              />
+            );
           })
         )}
       </ul>
@@ -161,12 +169,19 @@ export function Form({
   );
 }
 
-function EduItem({ edu, eduActions }) {
+function EduItem({ edu, eduActions, setCurrentEduId, handleOpenEduForm }) {
   return (
     <li>
       <p>{edu.name}</p>
       <button onClick={() => eduActions.handleRemoveEdu(edu.id)}>remove</button>
-      <button>edit</button>
+      <button
+        onClick={() => {
+          setCurrentEduId(edu.id);
+          handleOpenEduForm(true);
+        }}
+      >
+        edit
+      </button>
       <button onClick={() => eduActions.handleChangeEduVisible(edu.id)}>
         hide
       </button>
