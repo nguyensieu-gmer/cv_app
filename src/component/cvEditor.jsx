@@ -127,7 +127,15 @@ export function Form({
           />
         ) : (
           experience.map((item) => {
-            return <ExpItem key={item.id} exp={item} expActions={expActions} />;
+            return (
+              <ExpItem
+                key={item.id}
+                exp={item}
+                setCurrentExpId={setCurrentExpId}
+                handleOpenExpForm={handleOpenExpForm}
+                expActions={expActions}
+              />
+            );
           })
         )}
       </ul>
@@ -143,7 +151,7 @@ export function Form({
             id: crypto.randomUUID(),
           };
           setCurrentExpId(NewExp.id);
-          expActions.handleAddEpx(NewExp);
+          expActions.handleAddExp(NewExp);
           handleOpenExpForm(true);
         }}
       >
@@ -166,12 +174,19 @@ function EduItem({ edu, eduActions }) {
   );
 }
 
-function ExpItem({ exp, expActions }) {
+function ExpItem({ exp, expActions, setCurrentExpId, handleOpenExpForm }) {
   return (
     <li>
       <p>{exp.name}</p>
       <button onClick={() => expActions.handleRemoveExp(exp.id)}>remove</button>
-      <button>edit</button>
+      <button
+        onClick={() => {
+          setCurrentExpId(exp.id);
+          handleOpenExpForm(true);
+        }}
+      >
+        edit
+      </button>
       <button onClick={() => expActions.handleChangeExpVisible(exp.id)}>
         hide
       </button>
