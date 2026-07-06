@@ -18,7 +18,7 @@ function App() {
     );
   }
 
-  function handleAddEpx(newItem) {
+  function handleAddExp(newItem) {
     setExperience((items) => {
       return [...items, newItem];
     });
@@ -82,7 +82,7 @@ function App() {
             handleChangeEduVisible,
           }}
           expActions={{
-            handleAddEpx,
+            handleAddExp,
             handleRemoveExp,
             handleUpdateExp,
             handleChangeExpVisible,
