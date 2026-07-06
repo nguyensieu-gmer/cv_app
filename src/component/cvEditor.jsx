@@ -127,7 +127,7 @@ export function Form({
           />
         ) : (
           experience.map((item) => {
-            return <ExpItem key={item.id} {...item} />;
+            return <ExpItem key={item.id} exp={item} expActions={expActions} />;
           })
         )}
       </ul>
@@ -166,6 +166,15 @@ function EduItem({ edu, eduActions }) {
   );
 }
 
-function ExpItem({ name }) {
-  return <li>{name}</li>;
+function ExpItem({ exp, expActions }) {
+  return (
+    <li>
+      <p>{exp.name}</p>
+      <button onClick={() => expActions.handleRemoveExp(exp.id)}>remove</button>
+      <button>edit</button>
+      <button onClick={() => expActions.handleChangeExpVisible(exp.id)}>
+        hide
+      </button>
+    </li>
+  );
 }
