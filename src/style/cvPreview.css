@@ -1,6 +1,7 @@
 .cv {
   min-height: 100vh;
-  border: 0.5px solid black;
+  border: 0.1px solid black;
+  box-shadow: 0 0 10px 5px rgba(128, 128, 128, 0.188);
 }
 
 .cvHead {
