@@ -1,0 +1,54 @@
+.cv {
+  min-height: 100vh;
+  border: 0.5px solid black;
+}
+
+.cvHead {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  color: white;
+  background-color: var(--backGround-cv-color);
+  height: 9rem;
+}
+
+.cvContact {
+  display: flex;
+  font-size: var(--h2-font-size);
+  gap: 1rem;
+  font-weight: var(--font-semi-bold);
+}
+
+.cvContent {
+  margin: 2rem 3rem;
+}
+
+.cvTitle {
+  padding: 0.5rem;
+  background-color: var(--backGround-cv-color-second);
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.cvList {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvList li {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 1rem 0;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-regular);
+}
+
+.organize {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+}

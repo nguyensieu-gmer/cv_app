@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
 :root {
+  --backGround-cv-color: #60656f;
+  --backGround-cv-color-second: rgb(217, 217, 217);
   --body-font: "Montserrat", sans-serif;
   --biggest-font-size: 3rem;
   --bigger-font-size: 2rem;
@@ -15,7 +16,7 @@
   --normal-font-size: 0.938rem;
   --small-font-size: 0.813rem;
 
-  --font-regular: 400;
+  --font-regular: 450;
   --font-semi-bold: 600;
   --font-bold: 700;
 }
