@@ -10,6 +10,20 @@ function App() {
   const [education, setEducation] = useState(data.education);
   const [experience, setExperience] = useState(data.experience);
 
+  function handleUpdateEdu(updatedItem) {
+    setEducation((items) =>
+      items.map((item) => (item.id === updatedItem.id ? updatedItem : item)),
+    );
+  }
+
+  function handleAddEdu(newItem) {
+    setEducation((items) => [...items, newItem]);
+  }
+
+  function handleRemoveEdu(id) {
+    setEducation((items) => items.filter((item) => item.id !== id));
+  }
+
   function handleChangePersonalInfor(e) {
     const { name, value } = e.target;
     setPersonalInfor((prev) => {
@@ -27,6 +41,7 @@ function App() {
           education={education}
           experience={experience}
           actions={{ handleChangePersonalInfor }}
+          eduActions={{ handleAddEdu, handleRemoveEdu, handleUpdateEdu }}
         />
       </div>
       <CV

@@ -30,7 +30,7 @@ function EduItem({ name, from, to, address, major }) {
   return (
     <li>
       <p>
-        {from} - {to}
+        {from} {to.trim() !== "" ? "-" : ""} {to}
       </p>
       <p>{name}</p>
       <p>{address}</p>

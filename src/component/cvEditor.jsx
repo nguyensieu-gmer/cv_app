@@ -1,9 +1,24 @@
 import { useState } from "react";
 import { EduForm } from "./customForm";
 
-export function Form({ personalInfor, education, experience, actions }) {
+export function Form({
+  personalInfor,
+  education,
+  experience,
+  actions,
+  eduActions,
+}) {
   const [eduIsOpen, setEduForm] = useState(false);
   const { name, email, address, phone } = personalInfor;
+  const [currentEduId, setCurrentEduId] = useState(null);
+
+  const currentEdu = education.find((item) => item.id === currentEduId);
+
+  function eduOnChange(e) {
+    const { name, value } = e.target;
+    const udated = { ...currentEdu, [name]: value };
+    eduActions.handleUpdateEdu(udated);
+  }
 
   function handleOpenEduForm(value) {
     setEduForm(value);
@@ -56,14 +71,36 @@ export function Form({ personalInfor, education, experience, actions }) {
       <div>Education</div>
       <ul>
         {eduIsOpen ? (
-          <EduForm handleChange={handleOpenEduForm} />
+          <EduForm
+            edu={currentEdu}
+            eduOnChange={eduOnChange}
+            handleChange={handleOpenEduForm}
+            eduActions={eduActions}
+          />
         ) : (
           education.map((item) => {
             return <EduItem key={item.id} {...item} />;
           })
         )}
       </ul>
-      <button onClick={() => handleOpenEduForm(true)}>add education</button>
+      <button
+        onClick={() => {
+          const newEdu = {
+            name: "",
+            from: "",
+            to: "",
+            address: "",
+            major: "",
+            visible: true,
+            id: crypto.randomUUID(),
+          };
+          eduActions.handleAddEdu(newEdu);
+          setCurrentEduId(newEdu.id);
+          handleOpenEduForm(true);
+        }}
+      >
+        add education
+      </button>
       <div>Experience</div>
       <ul>
         {experience.map((item) => {
