@@ -53,12 +53,19 @@ export function EduForm({ handleChange, edu, eduOnChange, eduActions }) {
       </div>
       <button
         onClick={() => {
-          eduActions.handleRemoveEdu(edu.id);
           handleChange(false);
         }}
         type="button"
       >
         Cancel
+      </button>
+      <button
+        onClick={() => {
+          eduActions.handleRemoveEdu(edu.id);
+          handleChange(false);
+        }}
+      >
+        remove
       </button>
       <button onClick={() => handleChange(false)} type="submit">
         Add
@@ -122,12 +129,19 @@ export function ExpForm({ handleChange, exp, expOnChange, expActions }) {
       </div>
       <button
         onClick={() => {
-          expActions.handleRemoveExp(exp.id);
           handleChange(false);
         }}
         type="button"
       >
         Cancel
+      </button>
+      <button
+        onClick={() => {
+          expActions.handleRemoveExp(exp.id);
+          handleChange(false);
+        }}
+      >
+        remove
       </button>
       <button onClick={() => handleChange(false)} type="submit">
         Add
