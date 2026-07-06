@@ -10,6 +10,14 @@ function App() {
   const [education, setEducation] = useState(data.education);
   const [experience, setExperience] = useState(data.experience);
 
+  function handleChangeExpVisible(id) {
+    setExperience((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, visible: !item.visible } : item,
+      ),
+    );
+  }
+
   function handleAddEpx(newItem) {
     setExperience((items) => {
       return [...items, newItem];
@@ -73,7 +81,12 @@ function App() {
             handleUpdateEdu,
             handleChangeEduVisible,
           }}
-          expActions={{ handleAddEpx, handleRemoveExp, handleUpdateExp }}
+          expActions={{
+            handleAddEpx,
+            handleRemoveExp,
+            handleUpdateExp,
+            handleChangeExpVisible,
+          }}
         />
       </div>
       <CV
