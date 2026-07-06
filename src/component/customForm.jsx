@@ -127,6 +127,15 @@ export function ExpForm({ handleChange, exp, expOnChange, expActions }) {
           id="positionTitle"
         />
       </div>
+      <div>
+        <label htmlFor="desciption">desciption</label>
+        <textarea
+          value={exp.desciption}
+          onChange={expOnChange}
+          name="desciption"
+          id="desciption"
+        ></textarea>
+      </div>
       <button
         onClick={() => {
           handleChange(false);
