@@ -30,7 +30,7 @@ function EduItem({ name, from, to, address, major }) {
   return (
     <li>
       <p>
-        {from} - {to}
+        {from} {to.trim() !== "" ? "-" : ""} {to}
       </p>
       <p>{name}</p>
       <p>{address}</p>
@@ -43,11 +43,11 @@ function ExpItem({ name, from, to, positionTitle, location }) {
   return (
     <li>
       <p>
-        {from} - {to}
+        {from} {to.trim() !== "" ? "-" : ""} {to}
       </p>
       <p>{name}</p>
-      <p>{positionTitle}</p>
       <p>{location}</p>
+      <p>{positionTitle}</p>
     </li>
   );
 }

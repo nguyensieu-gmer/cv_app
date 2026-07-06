@@ -1,12 +1,42 @@
 import { useState } from "react";
 import { EduForm } from "./customForm";
+import { ExpForm } from "./customForm";
 
-export function Form({ personalInfor, education, experience, actions }) {
+export function Form({
+  personalInfor,
+  education,
+  experience,
+  actions,
+  eduActions,
+  expActions,
+}) {
   const [eduIsOpen, setEduForm] = useState(false);
+  const [expIsOpen, setExpForm] = useState(false);
   const { name, email, address, phone } = personalInfor;
+  const [currentEduId, setCurrentEduId] = useState(null);
+  const [currentExpId, setCurrentExpId] = useState(null);
+
+  const currentExp = experience.find((item) => item.id === currentExpId);
+  const currentEdu = education.find((item) => item.id === currentEduId);
+
+  function expOnChange(e) {
+    const { name, value } = e.target;
+    const updated = { ...currentExp, [name]: value };
+    expActions.handleUpdateExp(updated);
+  }
+
+  function eduOnChange(e) {
+    const { name, value } = e.target;
+    const udated = { ...currentEdu, [name]: value };
+    eduActions.handleUpdateEdu(udated);
+  }
 
   function handleOpenEduForm(value) {
     setEduForm(value);
+  }
+
+  function handleOpenExpForm(value) {
+    setExpForm(value);
   }
 
   return (
@@ -56,21 +86,69 @@ export function Form({ personalInfor, education, experience, actions }) {
       <div>Education</div>
       <ul>
         {eduIsOpen ? (
-          <EduForm handleChange={handleOpenEduForm} />
+          <EduForm
+            edu={currentEdu}
+            eduOnChange={eduOnChange}
+            handleChange={handleOpenEduForm}
+            eduActions={eduActions}
+          />
         ) : (
           education.map((item) => {
             return <EduItem key={item.id} {...item} />;
           })
         )}
       </ul>
-      <button onClick={() => handleOpenEduForm(true)}>add education</button>
+      <button
+        onClick={() => {
+          const newEdu = {
+            name: "",
+            from: "",
+            to: "",
+            address: "",
+            major: "",
+            visible: true,
+            id: crypto.randomUUID(),
+          };
+          eduActions.handleAddEdu(newEdu);
+          setCurrentEduId(newEdu.id);
+          handleOpenEduForm(true);
+        }}
+      >
+        add education
+      </button>
       <div>Experience</div>
       <ul>
-        {experience.map((item) => {
-          return <ExpItem key={item.id} {...item} />;
-        })}
+        {expIsOpen ? (
+          <ExpForm
+            handleChange={handleOpenExpForm}
+            exp={currentExp}
+            expOnChange={expOnChange}
+            expActions={expActions}
+          />
+        ) : (
+          experience.map((item) => {
+            return <ExpItem key={item.id} {...item} />;
+          })
+        )}
       </ul>
-      <button>add experience</button>
+      <button
+        onClick={() => {
+          const NewExp = {
+            name: "",
+            from: "",
+            to: "",
+            positionTitle: "",
+            location: "",
+            visible: true,
+            id: crypto.randomUUID(),
+          };
+          setCurrentExpId(NewExp.id);
+          expActions.handleAddEpx(NewExp);
+          handleOpenExpForm(true);
+        }}
+      >
+        add experience
+      </button>
     </div>
   );
 }
