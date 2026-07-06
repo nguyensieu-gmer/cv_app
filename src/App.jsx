@@ -16,6 +16,14 @@ function App() {
     });
   }
 
+  function handleChangeEduVisible(id) {
+    setEducation((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, visible: !item.visible } : item,
+      ),
+    );
+  }
+
   function handleUpdateExp(updatedItem) {
     setExperience((items) => {
       return items.map((item) =>
@@ -59,7 +67,12 @@ function App() {
           education={education}
           experience={experience}
           actions={{ handleChangePersonalInfor }}
-          eduActions={{ handleAddEdu, handleRemoveEdu, handleUpdateEdu }}
+          eduActions={{
+            handleAddEdu,
+            handleRemoveEdu,
+            handleUpdateEdu,
+            handleChangeEduVisible,
+          }}
           expActions={{ handleAddEpx, handleRemoveExp, handleUpdateExp }}
         />
       </div>
