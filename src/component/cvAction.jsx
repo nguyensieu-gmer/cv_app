@@ -1,8 +1,14 @@
+import "../style/cvAction.css";
+
 export function Action({ clearResume, loadExample }) {
   return (
-    <div>
-      <button onClick={clearResume}>Clear resume</button>
-      <button onClick={loadExample}>Load example</button>
+    <div className="btns">
+      <button className="btn" onClick={clearResume}>
+        Clear resume
+      </button>
+      <button className="btn" onClick={loadExample}>
+        Load example
+      </button>
     </div>
   );
 }

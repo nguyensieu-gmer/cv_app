@@ -1,8 +1,10 @@
+import "../style/toolBar.css";
+
 export function Tool() {
   return (
-    <div>
-      <button>Content</button>
-      <button>Customize</button>
+    <div className="toolBar_btns">
+      <button className="btn">Content</button>
+      <button className="btn">Customize</button>
     </div>
   );
 }
