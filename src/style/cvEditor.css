@@ -1,0 +1,80 @@
+.user_cvEditor div,
+.custom_editor div {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_cvEditor div label,
+.edu_editor,
+.custom_editor div label {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.edu_editor.cvTitle {
+  margin: 1rem 0;
+}
+
+.editor_list {
+  padding: 0;
+}
+
+.editor_item {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.editor_item button {
+  border: none;
+  background-color: transparent;
+  margin-left: 0.5rem;
+}
+
+.edu_item_name {
+  margin-right: auto;
+}
+
+.btn {
+  border: transparent;
+  min-width: 5rem;
+  padding: 0.3rem 0.5rem;
+  background-color: var(--backGround-button);
+  color: white;
+  transition: 0.3s ease;
+  font-size: var(--h2-font-size);
+}
+
+.btn:hover {
+  background-color: var(--backGround-button-hover);
+}
+
+.btn.btn_editor {
+  display: flex;
+  margin: 1rem auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+div.btns.customForm_btn {
+  display: flex;
+}
+
+#btns_1 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#btns_2 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem 0;
+}

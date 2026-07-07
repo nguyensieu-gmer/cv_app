@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EduForm } from "./customForm";
 import { ExpForm } from "./customForm";
+import "../style/cvEditor.css";
 
 export function Form({
   personalInfor,
@@ -40,8 +41,9 @@ export function Form({
   }
 
   return (
-    <div>
-      <form action="">
+    <div className="cvEditor">
+      <div className="cvTitle edu_editor">Information</div>
+      <form className="user_cvEditor">
         <div>
           <label htmlFor="userName">Name:</label>
           <input
@@ -83,8 +85,8 @@ export function Form({
           />
         </div>
       </form>
-      <div>Education</div>
-      <ul>
+      <div className="cvTitle edu_editor">Education</div>
+      <ul className="editor_list">
         {eduIsOpen ? (
           <EduForm
             edu={currentEdu}
@@ -106,26 +108,30 @@ export function Form({
           })
         )}
       </ul>
-      <button
-        onClick={() => {
-          const newEdu = {
-            name: "",
-            from: "",
-            to: "",
-            address: "",
-            major: "",
-            visible: true,
-            id: crypto.randomUUID(),
-          };
-          eduActions.handleAddEdu(newEdu);
-          setCurrentEduId(newEdu.id);
-          handleOpenEduForm(true);
-        }}
-      >
-        add education
-      </button>
-      <div>Experience</div>
-      <ul>
+      {!eduIsOpen && (
+        <button
+          className="btn btn_editor"
+          onClick={() => {
+            const newEdu = {
+              name: "",
+              from: "",
+              to: "",
+              address: "",
+              major: "",
+              visible: true,
+              id: crypto.randomUUID(),
+            };
+            eduActions.handleAddEdu(newEdu);
+            setCurrentEduId(newEdu.id);
+            handleOpenEduForm(true);
+          }}
+        >
+          <i className="ri-add-circle-fill"></i>
+          <p>education</p>
+        </button>
+      )}
+      <div className="cvTitle edu_editor">Experience</div>
+      <ul className="editor_list">
         {expIsOpen ? (
           <ExpForm
             handleChange={handleOpenExpForm}
@@ -147,43 +153,55 @@ export function Form({
           })
         )}
       </ul>
-      <button
-        onClick={() => {
-          const NewExp = {
-            name: "",
-            from: "",
-            to: "",
-            positionTitle: "",
-            location: "",
-            visible: true,
-            id: crypto.randomUUID(),
-          };
-          setCurrentExpId(NewExp.id);
-          expActions.handleAddExp(NewExp);
-          handleOpenExpForm(true);
-        }}
-      >
-        add experience
-      </button>
+      {!expIsOpen && (
+        <button
+          className="btn btn_editor"
+          onClick={() => {
+            const NewExp = {
+              name: "",
+              from: "",
+              to: "",
+              positionTitle: "",
+              location: "",
+              visible: true,
+              id: crypto.randomUUID(),
+            };
+            setCurrentExpId(NewExp.id);
+            expActions.handleAddExp(NewExp);
+            handleOpenExpForm(true);
+          }}
+        >
+          <i className="ri-add-circle-fill"></i>
+          <p>experience</p>
+        </button>
+      )}
     </div>
   );
 }
 
 function EduItem({ edu, eduActions, setCurrentEduId, handleOpenEduForm }) {
   return (
-    <li>
-      <p>{edu.name}</p>
-      <button onClick={() => eduActions.handleRemoveEdu(edu.id)}>remove</button>
+    <li className="editor_item">
+      <p className="edu_item_name">
+        {edu.name.trim() !== "" ? edu.name : "No title"}
+      </p>
+      <button onClick={() => eduActions.handleRemoveEdu(edu.id)}>
+        <i className="ri-delete-bin-fill"></i>
+      </button>
       <button
         onClick={() => {
           setCurrentEduId(edu.id);
           handleOpenEduForm(true);
         }}
       >
-        edit
+        <i className="ri-pencil-fill"></i>
       </button>
       <button onClick={() => eduActions.handleChangeEduVisible(edu.id)}>
-        hide
+        {!edu.visible ? (
+          <i className="ri-eye-fill"></i>
+        ) : (
+          <i className="ri-eye-off-fill"></i>
+        )}
       </button>
     </li>
   );
@@ -191,19 +209,27 @@ function EduItem({ edu, eduActions, setCurrentEduId, handleOpenEduForm }) {
 
 function ExpItem({ exp, expActions, setCurrentExpId, handleOpenExpForm }) {
   return (
-    <li>
-      <p>{exp.name}</p>
-      <button onClick={() => expActions.handleRemoveExp(exp.id)}>remove</button>
+    <li className="editor_item">
+      <p className="edu_item_name">
+        {exp.name.trim() !== "" ? exp.name : "No title"}
+      </p>
+      <button onClick={() => expActions.handleRemoveExp(exp.id)}>
+        <i className="ri-delete-bin-fill"></i>
+      </button>
       <button
         onClick={() => {
           setCurrentExpId(exp.id);
           handleOpenExpForm(true);
         }}
       >
-        edit
+        <i className="ri-pencil-fill"></i>
       </button>
       <button onClick={() => expActions.handleChangeExpVisible(exp.id)}>
-        hide
+        {!exp.visible ? (
+          <i className="ri-eye-fill"></i>
+        ) : (
+          <i className="ri-eye-off-fill"></i>
+        )}
       </button>
     </li>
   );

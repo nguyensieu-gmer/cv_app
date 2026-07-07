@@ -7,6 +7,9 @@
 :root {
   --backGround-cv-color: #60656f;
   --backGround-cv-color-second: rgb(217, 217, 217);
+  --backGround-button: #1f5673;
+  --backGround-button-hover: #759fbc;
+
   --body-font: "Montserrat", sans-serif;
   --biggest-font-size: 3rem;
   --bigger-font-size: 2rem;

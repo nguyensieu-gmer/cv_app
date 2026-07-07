@@ -8,15 +8,15 @@ export function CV({ personalInfor, education, experience }) {
         <h1 className="cvName">{name}</h1>
         <div className="cvContact">
           <div>
-            <i class="ri-mail-fill"></i>
+            <i className="ri-mail-fill"></i>
             <span>{email}</span>
           </div>
           <div>
-            <i class="ri-contacts-book-2-fill"></i>
+            <i className="ri-contacts-book-2-fill"></i>
             <span>{phone}</span>
           </div>
           <div>
-            <i class="ri-map-pin-2-fill"></i>
+            <i className="ri-map-pin-2-fill"></i>
             <span>{address}</span>
           </div>
         </div>

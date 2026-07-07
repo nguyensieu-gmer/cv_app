@@ -1,6 +1,6 @@
 export function EduForm({ handleChange, edu, eduOnChange, eduActions }) {
   return (
-    <form action="">
+    <form className="custom_editor">
       <div>
         <label htmlFor="eduFrom">From: </label>
         <input
@@ -51,32 +51,40 @@ export function EduForm({ handleChange, edu, eduOnChange, eduActions }) {
           id="eduMajor"
         />
       </div>
-      <button
-        onClick={() => {
-          handleChange(false);
-        }}
-        type="button"
-      >
-        Cancel
-      </button>
-      <button
-        onClick={() => {
-          eduActions.handleRemoveEdu(edu.id);
-          handleChange(false);
-        }}
-      >
-        remove
-      </button>
-      <button onClick={() => handleChange(false)} type="submit">
-        Add
-      </button>
+      <div id="btns_1">
+        <button
+          className="btn"
+          onClick={() => {
+            handleChange(false);
+          }}
+          type="button"
+        >
+          Cancel
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            eduActions.handleRemoveEdu(edu.id);
+            handleChange(false);
+          }}
+        >
+          remove
+        </button>
+        <button
+          className="btn"
+          onClick={() => handleChange(false)}
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
     </form>
   );
 }
 
 export function ExpForm({ handleChange, exp, expOnChange, expActions }) {
   return (
-    <form action="">
+    <form className="custom_editor">
       <div>
         <label htmlFor="eduFrom">From: </label>
         <input
@@ -136,25 +144,33 @@ export function ExpForm({ handleChange, exp, expOnChange, expActions }) {
           id="desciption"
         ></textarea>
       </div>
-      <button
-        onClick={() => {
-          handleChange(false);
-        }}
-        type="button"
-      >
-        Cancel
-      </button>
-      <button
-        onClick={() => {
-          expActions.handleRemoveExp(exp.id);
-          handleChange(false);
-        }}
-      >
-        remove
-      </button>
-      <button onClick={() => handleChange(false)} type="submit">
-        Add
-      </button>
+      <div id="btns_2">
+        <button
+          className="btn"
+          onClick={() => {
+            handleChange(false);
+          }}
+          type="button"
+        >
+          Cancel
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            expActions.handleRemoveExp(exp.id);
+            handleChange(false);
+          }}
+        >
+          remove
+        </button>
+        <button
+          className="btn"
+          onClick={() => handleChange(false)}
+          type="submit"
+        >
+          Add
+        </button>
+      </div>
     </form>
   );
 }
